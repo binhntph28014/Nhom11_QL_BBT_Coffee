@@ -14,8 +14,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import binhntph28014.fpoly.bbt_coffee.DAO.NhanVienDAO;
-import binhntph28014.fpoly.bbt_coffee.DTO.NhanVien;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DAO.NhanVienDAO;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.NhanVien;
+
 
 public class ManHinhDangNhap extends AppCompatActivity {
     EditText edSDT , edPasswordT;

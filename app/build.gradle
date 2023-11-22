@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace 'binhntph28014.fpoly.nhom11_ql_bbt_coffee'
-    compileSdk 32
+    compileSdk 34
 
     defaultConfig {
         applicationId "binhntph28014.fpoly.nhom11_ql_bbt_coffee"
         minSdk 26
-        targetSdk 32
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
