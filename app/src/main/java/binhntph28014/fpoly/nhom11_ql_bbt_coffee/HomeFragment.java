@@ -31,8 +31,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Adapter.adapterSideshow;
-import me.relex.circleindicator.CircleIndicator;
+
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.sideshow;
+import me.relex.circleindicator.CircleIndicator;
 
 
 public class HomeFragment extends Fragment {
@@ -59,7 +60,7 @@ public class HomeFragment extends Fragment {
         gv = view.findViewById(R.id.gvPopular);
         edTimKiem= view.findViewById(R.id.edTimKiem);
         tv_entry = view.findViewById(R.id.tv_entry);
-
+// thử commit
         //sideshow
         viewPager = view.findViewById(R.id.pager_sideshow);
         circleIndicator = view.findViewById(R.id.indicator_img);
