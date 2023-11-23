@@ -39,6 +39,7 @@ public class HomeFragment extends Fragment {
     LinearLayout btnTea, btnCoffee, btnSmoothie, btnOther;
     GridView gv;
     SearchView edTimKiem;
+    //
     TextView tv_entry;
     ViewPager viewPager;
     List<sideshow> list_sideshow;
