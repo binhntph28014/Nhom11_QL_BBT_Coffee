@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navHome"
+            android:title="Trang chủ"
+            android:icon="@drawable/ic_home"/>
+        <item
+            android:id="@+id/navDoUong"
+            android:title="Quản lý đồ uống"
+            android:icon="@drawable/ic_douong"/>
+        <item
+            android:id="@+id/navHoaDon"
+            android:title="Quản lý hóa đơn"
+            android:icon="@drawable/ic_list"
+         />
+        <item
+            android:id="@+id/navKhachHang"
+            android:title="Quản lý khách hàng"
+            android:icon="@drawable/ic_kh"/>
+        <item
+            android:id="@+id/navNhanVien"
+            android:title="Quản lý nhân viên"
+            android:visible="false"
+            android:icon="@drawable/ic_nv"
+            />
+    </group>
+    <item android:title="Thống kê">
+        <menu>
+            <item
+                android:id="@+id/nav_Top10"
+                android:title="10 đồ uống đặt nhiều nhất"
+                android:icon="@drawable/ic_top10"/>
+            <item
+                android:id="@+id/nav_DoanhThu"
+                android:title="Doanh thu"
+                android:visible="false"
+                android:icon="@drawable/ic_doanhthu"/>
+            <item
+                android:id="@+id/nav_BieuDoDoanhThu"
+                android:title="Biểu đồ doanh thu"
+                android:visible="false"
+                android:icon="@drawable/ic_bieudo"
+                />
+            <item
+                android:id="@+id/nav_DoanhSoNhanVien"
+                android:title="Doanh số"
+                android:icon="@drawable/ic_doanhthu"
+                />
+        </menu>
+    </item>
+    <item android:title="Người dùng">
+        <menu>
+            <item
+                android:id="@+id/nav_DoiMatKhau"
+                android:title="Đổi mật khẩu"
+                android:icon="@drawable/ic_baseline_lock_24"/>
+            <item
+                android:id="@+id/nav_DangXuat"
+                android:title="Đăng xuất"
+                android:icon="@drawable/ic_dangxuat"/>
+        </menu>
+    </item>
+</menu>
