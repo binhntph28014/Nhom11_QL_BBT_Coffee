@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/item_backround">
+
+            <ImageView
+                android:id="@+id/imgDoUong"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/tvTenDoUong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên đồ uống"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tvGiaDoUong"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#FD0000"
+                    android:textStyle="bold"
+                    android:text="Giá sp"
+                    android:textSize="20dp"/>
+
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tvTrangThai"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Trạng thái"
+                android:textSize="20dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
