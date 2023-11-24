@@ -12,9 +12,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
+
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyDoUongFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DrawerLayout drawerLayout;
     TextView tvTitle;
+    private String mSDT="";
+    ImageView imgCart;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +35,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         toolbar = findViewById(R.id.toolbar);
+
+        tvTitle = findViewById(R.id.tvTitle);
         navigationView = findViewById(R.id.navigationView);
         drawerLayout = findViewById(R.id.drawerLayout);
+
         setSupportActionBar(toolbar);
         ActionBar bar = getSupportActionBar();
         bar.setHomeAsUpIndicator(R.drawable.ic_menu);
         bar.setDisplayHomeAsUpEnabled(true);
+
+        Intent intent = getIntent();
+        String sdt = intent.getStringExtra("user");
+
+
 
         FragmentManager manager = getSupportFragmentManager();
         HomeFragment homeFragment = new HomeFragment();
@@ -60,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.navDoUong:
                         tvTitle.setText("Quản lý đồ uống");
                         setTitle("Quản lý đồ uống");
+                        QuanLyDoUongFragment quanLyDoUongFragment = new QuanLyDoUongFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyDoUongFragment).commit();
                         break;
                     case R.id.nav_DoanhThu:
                         tvTitle.setText("Doanh thu");
