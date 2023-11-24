@@ -41,7 +41,10 @@ import java.util.ArrayList;
 
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Adapter.QuanLyDoUongAdapter;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DAO.DoUongDAO;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DAO.LoaiDAO;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.DoUong;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.Loai;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.R;
 
 
 public class QuanLyDoUongFragment extends Fragment {
