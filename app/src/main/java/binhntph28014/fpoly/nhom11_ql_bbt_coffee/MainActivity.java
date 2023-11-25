@@ -53,6 +53,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String sdt = intent.getStringExtra("user");
 
+        if (sdt.equalsIgnoreCase("admin")){
+            navigationView.getMenu().findItem(R.id.nav_DoanhThu).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_BieuDoDoanhThu).setVisible(true);
+            navigationView.getMenu().findItem(R.id.navNhanVien).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_DoanhSoNhanVien).setVisible(false);
+        }
 
 
         FragmentManager manager = getSupportFragmentManager();

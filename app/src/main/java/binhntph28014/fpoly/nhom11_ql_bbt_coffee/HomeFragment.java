@@ -30,6 +30,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Adapter.GridViewAdapter;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Adapter.QuanLyDoUongAdapter;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Adapter.adapterSideshow;
 
@@ -42,19 +43,21 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class HomeFragment extends Fragment {
     LinearLayout btnTea, btnCoffee, btnSmoothie, btnOther;
+    DoUongDAO dao;
+    ArrayList<DoUong> list;
+    ArrayList<DoUong> listAll;
+    GridViewAdapter adapter;
+    QuanLyDoUongAdapter doUongAdapter;
     GridView gv;
     SearchView edTimKiem;
-    //commit thu
     TextView tv_entry;
+    DoUong item;
+
     ViewPager viewPager;
     List<sideshow> list_sideshow;
     CircleIndicator circleIndicator;
     binhntph28014.fpoly.nhom11_ql_bbt_coffee.Adapter.adapterSideshow adapterSideshow;
     Timer timer;
-    DoUong item;
-    ArrayList<DoUong> listAll;
-    DoUongDAO dao;
-    QuanLyDoUongAdapter doUongAdapter;
 
     public static ArrayList<GioHang> listGioHang;
 
@@ -70,7 +73,9 @@ public class HomeFragment extends Fragment {
         gv = view.findViewById(R.id.gvPopular);
         edTimKiem= view.findViewById(R.id.edTimKiem);
         tv_entry = view.findViewById(R.id.tv_entry);
-// thử commit
+        listAll = new ArrayList<>();
+        dao = new DoUongDAO(getActivity());
+
         //sideshow
         viewPager = view.findViewById(R.id.pager_sideshow);
         circleIndicator = view.findViewById(R.id.indicator_img);
@@ -82,6 +87,32 @@ public class HomeFragment extends Fragment {
         auto_sideshow();
         //end sideshow
 
+        if(dao.getLoai("1").size() != 0) {
+            listAll.addAll((ArrayList<DoUong>) dao.getLoai("1"));
+            //get nhu
+        }
+        if(dao.getLoai("2").size() != 0) {
+            listAll.addAll((ArrayList<DoUong>) dao.getLoai("2"));
+        }
+        if(dao.getLoai("3").size() != 0) {
+            listAll.addAll((ArrayList<DoUong>) dao.getLoai("3"));
+        }
+        if(dao.getLoai("4").size() != 0) {
+            listAll.addAll((ArrayList<DoUong>) dao.getLoai("4"));
+        }
+        ArrayList <DoUong> listSearch = new ArrayList<>();
+        edTimKiem.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                doUongAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         //nếu giỏ hàng đã có dữ liệu thì k cần tạo mảng mới
         if (listGioHang != null){
@@ -91,7 +122,54 @@ public class HomeFragment extends Fragment {
         }
 
 
+        listAll = (ArrayList<DoUong>) dao.getTop10();
+        adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
+        gv.setAdapter(adapter);
 
+        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                item = listAll.get(i);
+                if (item.getTrangThai()==1){
+                    openDialog(getActivity());
+                }else {
+                    Toast.makeText(getContext(), "Đồ uống này đã hết, vui lòng chọn đồ uống khác!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnTea.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listAll = (ArrayList<DoUong>) dao.getLoai("1");
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
+                gv.setAdapter(adapter);
+            }
+        });
+        btnCoffee.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listAll = (ArrayList<DoUong>) dao.getLoai("2");
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
+                gv.setAdapter(adapter);
+            }
+        });
+        btnSmoothie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listAll = (ArrayList<DoUong>) dao.getLoai("3");
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
+                gv.setAdapter(adapter);
+            }
+        });
+        btnOther.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listAll = (ArrayList<DoUong>) dao.getLoai("4");
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
+                gv.setAdapter(adapter);
+            }
+        });
         return view;
     }
 
@@ -130,8 +208,6 @@ public class HomeFragment extends Fragment {
         },500,2500);
     }
 
-
-    //end hàm sideshow
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -140,6 +216,7 @@ public class HomeFragment extends Fragment {
             timer = null;
         }
     }
+    //end hàm sideshow
 
     public void openDialog(final Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
