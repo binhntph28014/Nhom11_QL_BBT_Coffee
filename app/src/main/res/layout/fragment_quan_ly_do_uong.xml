@@ -13,6 +13,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right|bottom"
         android:layout_margin="25dp"
-        android:backgroundTint="#F89B4A"
+        android:backgroundTint="#205618"
         android:src="@drawable/ic_add"/>
 </FrameLayout>

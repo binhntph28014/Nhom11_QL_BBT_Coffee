@@ -1,30 +1,21 @@
 package binhntph28014.fpoly.nhom11_ql_bbt_coffee;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
@@ -82,9 +73,9 @@ public class HomeFragment extends Fragment {
 
     private List<sideshow> getListSideShow() {
         List<sideshow> list = new ArrayList<>();
-        list.add(new sideshow(R.drawable.img_banner1));
-        list.add(new sideshow(R.drawable.img_banner2));
-        list.add(new sideshow(R.drawable.img_banner3));
+        list.add(new sideshow(R.drawable.banner1));
+        list.add(new sideshow(R.drawable.banner2));
+        list.add(new sideshow(R.drawable.banner3));
         return list;
     }
     //hàm chạy auto

@@ -6,7 +6,7 @@
     <ImageView
         android:id="@+id/img_sideshow"
         android:scaleType="centerCrop"
-        android:src="@drawable/img_banner1"
+        android:src="@drawable/banner1"
         android:layout_width="match_parent"
         android:layout_height="160dp"/>
 </LinearLayout>
