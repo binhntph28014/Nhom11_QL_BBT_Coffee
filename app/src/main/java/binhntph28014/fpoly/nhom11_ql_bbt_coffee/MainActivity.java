@@ -11,12 +11,14 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.GioHangFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyDoUongFragment;
 
 
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         toolbar = findViewById(R.id.toolbar);
+        imgCart = findViewById(R.id.imgCart);
 
         tvTitle = findViewById(R.id.tvTitle);
         navigationView = findViewById(R.id.navigationView);
@@ -53,6 +56,14 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         HomeFragment homeFragment = new HomeFragment();
         manager.beginTransaction().replace(R.id.flContent, homeFragment).commit();
+        imgCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GioHangFragment gioHangFragment = new GioHangFragment();
+                manager.beginTransaction().replace(R.id.flContent, gioHangFragment).commit();
+                tvTitle.setText("Giỏ hàng");
+            }
+        });
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override

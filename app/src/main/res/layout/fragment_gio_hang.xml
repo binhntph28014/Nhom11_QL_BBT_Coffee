@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="10">
+    <ListView
+        android:id="@+id/lvGioHang"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"/>
+    <TextView
+        android:id="@+id/tvTongTien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FA0606"
+        android:textStyle="bold"
+        android:text="Tổng tiền:"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp" />
+    <CheckBox
+        android:id="@+id/chkThanhToan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đã thanh toán"
+        android:layout_marginLeft="20dp"/>
+    <Button
+        android:id="@+id/btnTaoDonHang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tạo đơn hàng"
+        android:layout_gravity="center"
+        android:backgroundTint="#F99A2D"
+        android:textColor="@color/black"/>
+</LinearLayout>

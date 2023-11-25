@@ -23,6 +23,7 @@ import java.util.TimerTask;
 
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Adapter.adapterSideshow;
 
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.GioHang;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.sideshow;
 import me.relex.circleindicator.CircleIndicator;
 
@@ -38,6 +39,8 @@ public class HomeFragment extends Fragment {
     CircleIndicator circleIndicator;
     binhntph28014.fpoly.nhom11_ql_bbt_coffee.Adapter.adapterSideshow adapterSideshow;
     Timer timer;
+
+    public static ArrayList<GioHang> listGioHang;
 
 
     @Nullable
