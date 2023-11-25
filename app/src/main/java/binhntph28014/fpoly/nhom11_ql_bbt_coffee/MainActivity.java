@@ -20,6 +20,8 @@ import com.google.android.material.navigation.NavigationView;
 
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.GioHangFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyDoUongFragment;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyHoaDonFragment;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyKhachHangFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -81,6 +83,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navKhachHang:
                         tvTitle.setText("Quản lý khách hàng");
+                        setTitle("Quản lý nhân viên");
+                        QuanLyKhachHangFragment quanLyKhachHangFragment = new QuanLyKhachHangFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyKhachHangFragment).commit();
                         break;
                     case R.id.navDoUong:
                         tvTitle.setText("Quản lý đồ uống");
@@ -96,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navHoaDon:
                         tvTitle.setText("Quản lý hóa đơn");
+                        setTitle("Quản lý hóa đơn");
+                        QuanLyHoaDonFragment quanLyHoaDonFragment = new QuanLyHoaDonFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyHoaDonFragment).commit();
                         break;
                     case R.id.nav_DoiMatKhau:
                         tvTitle.setText("Đổi mật khẩu");

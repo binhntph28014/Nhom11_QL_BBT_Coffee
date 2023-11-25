@@ -47,7 +47,7 @@ public class QuanLyHoaDonFragment extends Fragment {
 
         dao = new HoaDonDAO(getActivity());
         list = (ArrayList<HoaDon>) dao.getAll();
-        adapter = new AdapterQuanLyHoaDon(getActivity(), this, list);
+        adapter = new AdapterHoaDonKhachHang(getActivity(), list);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
