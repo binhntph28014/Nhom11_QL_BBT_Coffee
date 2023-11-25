@@ -1,4 +1,4 @@
-package binhntph28014.fpoly.bbt_coffee.DbHelper;
+package binhntph28014.fpoly.nhom11_ql_bbt_coffee.DbHelper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public static final String DbName = "Nhom11";
-    public static final int DbVersion = 2;
+    public static final int DbVersion = 3;
     public DbHelper(@Nullable Context context) {
         super(context, DbName, null, DbVersion);
     }
@@ -63,7 +63,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String insertAdmin = "insert into nhanVien values(1 , 'admin' , 'admin' , 'admin' , 1 , 1 , 'admin' ) ";
         sqLiteDatabase.execSQL(insertAdmin);
 
-        String insertLoai = "insert into loai values( 1, 'Trà'), ( 2, 'Coffee'), ( 3, 'Sinh tố'), ( 4, 'Khác') ";
+        String insertLoai = "insert into loai values( 1, 'Coffee'), ( 2, 'Trà'), ( 3, 'Sinh tố'), ( 4, 'Khác') ";
         sqLiteDatabase.execSQL(insertLoai);
     }
 

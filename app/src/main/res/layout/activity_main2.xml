@@ -108,37 +108,11 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:id="@+id/btnTea"
-                    android:layout_width="0dp"
-                    android:layout_height="75dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/categories_backround"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:src="@drawable/img_tea" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Tea"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-
-                <LinearLayout
                     android:id="@+id/btnCoffee"
                     android:layout_width="0dp"
                     android:layout_height="75dp"
+                    android:layout_marginLeft="20dp"
+
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/categories_backround2"
@@ -156,6 +130,32 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="Coffee"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnTea"
+                    android:layout_width="0dp"
+                    android:layout_height="75dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/categories_backround"
+                    android:orientation="vertical"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_tea" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Tea"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
