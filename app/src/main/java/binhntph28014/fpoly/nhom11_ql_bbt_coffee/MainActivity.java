@@ -22,6 +22,7 @@ import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.GioHangFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyDoUongFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyHoaDonFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyKhachHangFragment;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyNhanVienFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -86,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navNhanVien:
                         tvTitle.setText("Quản lý nhân viên");
+                        setTitle("Quản lý nhân viên");
+                        QuanLyNhanVienFragment quanLyNhanVienFragment = new QuanLyNhanVienFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyNhanVienFragment).commit();
                         break;
                     case R.id.navKhachHang:
                         tvTitle.setText("Quản lý khách hàng");
