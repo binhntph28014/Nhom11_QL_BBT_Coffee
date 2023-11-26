@@ -141,7 +141,7 @@ public class HomeFragment extends Fragment {
         btnTea.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listAll = (ArrayList<DoUong>) dao.getLoai("1");
+                listAll = (ArrayList<DoUong>) dao.getLoai("2");
                 adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
                 gv.setAdapter(adapter);
             }
@@ -149,7 +149,7 @@ public class HomeFragment extends Fragment {
         btnCoffee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                listAll = (ArrayList<DoUong>) dao.getLoai("2");
+                listAll = (ArrayList<DoUong>) dao.getLoai("1");
                 adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listAll);
                 gv.setAdapter(adapter);
             }
