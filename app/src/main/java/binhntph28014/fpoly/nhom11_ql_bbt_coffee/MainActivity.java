@@ -20,6 +20,9 @@ import com.google.android.material.navigation.NavigationView;
 
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.GioHangFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyDoUongFragment;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyHoaDonFragment;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyKhachHangFragment;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyNhanVienFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String sdt = intent.getStringExtra("user");
 
+        if (sdt.equalsIgnoreCase("admin")){
+            navigationView.getMenu().findItem(R.id.nav_DoanhThu).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_BieuDoDoanhThu).setVisible(true);
+            navigationView.getMenu().findItem(R.id.navNhanVien).setVisible(true);
+            navigationView.getMenu().findItem(R.id.nav_DoanhSoNhanVien).setVisible(false);
+        }
 
 
         FragmentManager manager = getSupportFragmentManager();
@@ -78,9 +87,15 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navNhanVien:
                         tvTitle.setText("Quản lý nhân viên");
+                        setTitle("Quản lý nhân viên");
+                        QuanLyNhanVienFragment quanLyNhanVienFragment = new QuanLyNhanVienFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyNhanVienFragment).commit();
                         break;
                     case R.id.navKhachHang:
                         tvTitle.setText("Quản lý khách hàng");
+                        setTitle("Quản lý nhân viên");
+                        QuanLyKhachHangFragment quanLyKhachHangFragment = new QuanLyKhachHangFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyKhachHangFragment).commit();
                         break;
                     case R.id.navDoUong:
                         tvTitle.setText("Quản lý đồ uống");
@@ -96,6 +111,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.navHoaDon:
                         tvTitle.setText("Quản lý hóa đơn");
+                        setTitle("Quản lý hóa đơn");
+                        QuanLyHoaDonFragment quanLyHoaDonFragment = new QuanLyHoaDonFragment();
+                        manager.beginTransaction().replace(R.id.flContent, quanLyHoaDonFragment).commit();
                         break;
                     case R.id.nav_DoiMatKhau:
                         tvTitle.setText("Đổi mật khẩu");

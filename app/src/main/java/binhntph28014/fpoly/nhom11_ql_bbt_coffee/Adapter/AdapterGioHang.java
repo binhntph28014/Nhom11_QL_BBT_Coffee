@@ -29,8 +29,6 @@ public class AdapterGioHang extends BaseAdapter {
         this.listGioHang = listGioHang;
     }
 
-
-
     @Override
     public int getCount() {
         return listGioHang.size();

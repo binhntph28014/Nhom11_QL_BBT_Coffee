@@ -48,7 +48,7 @@ public class ManHinhDangNhap extends AppCompatActivity {
                 String SDT = edSDT.getText().toString();
                 String matKhau = edPasswordT.getText().toString();
                 if(SDT.isEmpty()){
-                    edSDT.setError("Số điện thoại không được để trống");
+                    edSDT.setError("Tên đăng nhập không được để trống");
                 }else if(matKhau.isEmpty()){
                     edPasswordT.setError("Mật khẩu không được để trống");
                 }else{
@@ -63,11 +63,11 @@ public class ManHinhDangNhap extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         }else {
-                            Toast.makeText(ManHinhDangNhap.this, "Tài khoản này đã bị vô hiệu hóa", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ManHinhDangNhap.this, "Tài khoản nghỉ làm!", Toast.LENGTH_SHORT).show();
                         }
 
                     }else{
-                        Toast.makeText(ManHinhDangNhap.this, "Số điện thoại hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManHinhDangNhap.this, "Tên đăng nhập mật khẩu không đúng", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
