@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.DoiMatKhauFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.GioHangFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyDoUongFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyHoaDonFragment;
@@ -117,6 +118,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_DoiMatKhau:
                         tvTitle.setText("Đổi mật khẩu");
+                        setTitle("Đổi mật khẩu");
+                        DoiMatKhauFragment doiMatKhauFragment = new DoiMatKhauFragment();
+                        manager.beginTransaction().replace(R.id.flContent, doiMatKhauFragment).commit();
+
                         break;
                     case R.id.nav_DangXuat:
                         startActivity( new Intent(MainActivity.this, ManHinhDangNhap.class));
