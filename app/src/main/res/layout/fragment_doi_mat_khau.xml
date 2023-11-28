@@ -81,7 +81,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
             android:backgroundTint="#CC205618"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/btnHuyDMK"
@@ -91,7 +91,7 @@
             android:layout_weight="1"
             android:backgroundTint="#CC205618"
             android:text="Hủy"
-            android:textColor="@color/black" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
 </LinearLayout>
