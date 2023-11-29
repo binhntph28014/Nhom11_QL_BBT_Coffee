@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DAO.NhanVienDAO;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.HoaDon;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.NhanVien;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.DoanhThuFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyHoaDonFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.R;
 
@@ -30,16 +31,18 @@ public class AdapterQuanLyHoaDon extends ArrayAdapter {
     private ArrayList<HoaDon> list;
     TextView tvMaHD , tvNhanVien , tvKhachHang , tvTongTien , tvNgayXuat , tvTrangThai;
     ImageView img;
+    DoanhThuFragment doanhThuFragment;
     public AdapterQuanLyHoaDon(@NonNull Context context, QuanLyHoaDonFragment fragment, ArrayList<HoaDon> list) {
         super(context, 0 , list);
         this.context = context;
         this.list =list;
         this.fragment = fragment;
     }
-    public AdapterQuanLyHoaDon(@NonNull Context context, ArrayList<HoaDon> list) {
+    public AdapterQuanLyHoaDon(@NonNull Context context, DoanhThuFragment fragment, ArrayList<HoaDon> list) {
         super(context, 0 , list);
         this.context = context;
         this.list =list;
+        this.doanhThuFragment = fragment;
     }
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
     @NonNull
