@@ -7,10 +7,13 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -49,7 +52,7 @@ public class HomeFragment extends Fragment {
     GridViewAdapter adapter;
     QuanLyDoUongAdapter doUongAdapter;
     GridView gv;
-    SearchView edTimKiem;
+    EditText edTimKiem;
     TextView tv_entry;
     DoUong item;
 
@@ -101,16 +104,29 @@ public class HomeFragment extends Fragment {
             listAll.addAll((ArrayList<DoUong>) dao.getLoai("4"));
         }
         ArrayList <DoUong> listSearch = new ArrayList<>();
-        edTimKiem.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        edTimKiem.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                doUongAdapter.getFilter().filter(newText);
-                return false;
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                listSearch.clear();
+                tv_entry.setVisibility(View.VISIBLE);
+                for (int i = 0; i < listAll.size(); i++) {
+                    if(listAll.get(i).getTenDoUong().contains(edTimKiem.getText()) && edTimKiem.getText().length() != 0) {
+                        listSearch.add(listAll.get(i));
+                        tv_entry.setVisibility(View.GONE);
+                    }
+                }
+                adapter = new GridViewAdapter(getActivity(), HomeFragment.this, listSearch);
+                gv.setAdapter(adapter);
             }
         });
 

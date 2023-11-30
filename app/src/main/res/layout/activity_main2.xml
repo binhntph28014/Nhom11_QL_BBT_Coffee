@@ -71,13 +71,22 @@
 <!--                android:layout_gravity="center"-->
 <!--                android:layout_marginTop="10dp"-->
 <!--                android:src="@drawable/img_banner" />-->
-            <SearchView
-                android:id="@+id/edTimKiem"
-                android:layout_width="374dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:background="@drawable/item_search"
-                android:hint="Find your drink" />
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:startIconDrawable="@drawable/ic_search"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edTimKiem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Find your drink" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.viewpager.widget.ViewPager
                 android:layout_marginTop="20dp"
