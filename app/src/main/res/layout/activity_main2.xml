@@ -85,6 +85,7 @@
                     android:id="@+id/edTimKiem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="#4D205618"
                     android:hint="Find your drink" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,9 +120,8 @@
                 <LinearLayout
                     android:id="@+id/btnCoffee"
                     android:layout_width="0dp"
-                    android:layout_height="75dp"
+                    android:layout_height="80dp"
                     android:layout_marginLeft="20dp"
-
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/categories_backround2"
@@ -147,7 +147,7 @@
                 <LinearLayout
                     android:id="@+id/btnTea"
                     android:layout_width="0dp"
-                    android:layout_height="75dp"
+                    android:layout_height="80dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/categories_backround"
@@ -173,7 +173,7 @@
                 <LinearLayout
                     android:id="@+id/btnSmoothies"
                     android:layout_width="0dp"
-                    android:layout_height="75dp"
+                    android:layout_height="80dp"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/categories_backround3"
@@ -182,7 +182,7 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="37dp"
                         android:layout_gravity="center"
                         android:src="@drawable/img_smoothie" />
 
@@ -199,7 +199,7 @@
                 <LinearLayout
                     android:id="@+id/btnOther"
                     android:layout_width="0dp"
-                    android:layout_height="75dp"
+                    android:layout_height="80dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="1"
                     android:background="@drawable/categories_backround4"
@@ -208,7 +208,7 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="42dp"
                         android:layout_gravity="center"
                         android:src="@drawable/img_other" />
 
