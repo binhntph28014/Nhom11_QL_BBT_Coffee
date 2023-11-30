@@ -202,73 +202,74 @@ public class QuanLyDoUongFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //chuyển data imageview sang byte[]
-                BitmapDrawable bitmapDrawable = (BitmapDrawable) imgAnh.getDrawable();
-                Bitmap bitmap = bitmapDrawable.getBitmap();
-                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
-                byte[] hinhAnh = byteArray.toByteArray();
+                byte[] hinhAnh = new byte[0];
+                if (imgAnh.getDrawable() != null && imgAnh.getDrawable() instanceof BitmapDrawable){
+                    BitmapDrawable bitmapDrawable = (BitmapDrawable) imgAnh.getDrawable();
+                    Bitmap bitmap = bitmapDrawable.getBitmap();
 
+                    int sizeInBytes = bitmap.getByteCount();
+                    int maxSize = 1024*1024*5;
+                    if (sizeInBytes < maxSize){
+                        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
+                        hinhAnh = byteArray.toByteArray();
 
-                item = new DoUong();
-                item.setTenDoUong(edTenDoUong.getText().toString().trim());
-                item.setGiaTien(Integer.parseInt(edGiaTien.getText().toString().trim()));
-                if (chkTrangThai.isChecked()){
-                    item.setTrangThai(1);
-                }else {
-                    item.setTrangThai(0);
-                }
-                item.setMaLoai(maLoai);
-                item.setHinhAnh(hinhAnh);
-
-                if (validate() >0){
-                    if (type ==0){
-                        if (dao.insertDU(item) >0){
-                            Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        item = new DoUong();
+                        item.setTenDoUong(edTenDoUong.getText().toString().trim());
+                        if (chkTrangThai.isChecked()){
+                            item.setTrangThai(1);
                         }else {
-                            Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                            item.setTrangThai(0);
                         }
+                        item.setMaLoai(maLoai);
+                        item.setHinhAnh(hinhAnh);
+
+                        if (validate() >0){
+                            if (type ==0){
+                                if (dao.insertDU(item) >0){
+                                    Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                                }
+                                dialog.dismiss();
+                            }else {
+                                item.setMaDoUong(Integer.parseInt(edMaDoUong.getText().toString()));
+                                if (dao.updateDoUong(item) >0){
+                                    Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
+                                }
+                                dialog.dismiss();
+                            }
+                        }
+                        capNhatLv();
+//                        dialog.dismiss();
                     }else {
-                        item.setMaDoUong(Integer.parseInt(edMaDoUong.getText().toString()));
-                        if (dao.updateDoUong(item) >0){
-                            Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
-                        }
+                        Toast.makeText(context, "Dung lượng ảnh quá lớn!", Toast.LENGTH_SHORT).show();
                     }
-                }
 
-                capNhatLv();
-                dialog.dismiss();
+
+
+                }else {
+                    Toast.makeText(context, "Ảnh lỗi!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         dialog.show();
     }
     public int validate(){
         int check = 1;
-        if (edTenDoUong.getText().toString().isEmpty() || edGiaTien.getText().toString().isEmpty()||imgAnh.getDrawable()==null){
+        if (edTenDoUong.getText().toString().isEmpty() || edGiaTien.getText().toString().isEmpty()){
             Toast.makeText(getContext(), "Phải nhập đủ thông tin", Toast.LENGTH_SHORT).show();
             check = -1;
         }
-        else if ( edTenDoUong.getText().toString().isEmpty()){
-            Toast.makeText(getContext(), "Phải nhập Tên đồ uống", Toast.LENGTH_SHORT).show();
+        try {
+//            Integer.parseInt(edGiaTien.getText().toString().trim());
+            item.setGiaTien(Integer.parseInt(edGiaTien.getText().toString().trim()));
+            edGiaTien.setError(null);
+        }catch (Exception e){
+            edGiaTien.setError("Phải là số");
             check = -1;
-
-        }else if ( edGiaTien.getText().toString().isEmpty()){
-            Toast.makeText(getContext(), "Phải nhập giá tiền", Toast.LENGTH_SHORT).show();
-            check = -1;
-
-        }else if(imgAnh.getDrawable()==null){
-            Toast.makeText(getContext(), "Phải chọn ảnh", Toast.LENGTH_SHORT).show();
-            check = -1;
-
-        }else {
-            try {
-                Integer.parseInt(edGiaTien.getText().toString().trim());
-                edGiaTien.setError(null);
-            } catch (Exception e) {
-                edGiaTien.setError("Phải là số");
-                check = -1;
-            }
         }
         return check;
     }

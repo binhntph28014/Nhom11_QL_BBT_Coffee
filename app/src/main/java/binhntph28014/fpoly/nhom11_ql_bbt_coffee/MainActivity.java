@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.BieuDoFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.DoanhThuFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.DoiMatKhauFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.GioHangFragment;
@@ -132,6 +133,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_BieuDoDoanhThu:
                         tvTitle.setText("Biểu đồ doanh thu");
+                        setTitle("Biểu đồ");
+                        BieuDoFragment bieuDoFragment = new BieuDoFragment();
+                        manager.beginTransaction().replace(R.id.flContent, bieuDoFragment).commit();
                         break;
                     case R.id.nav_DoanhSoNhanVien:
                         tvTitle.setText("Doanh số");
