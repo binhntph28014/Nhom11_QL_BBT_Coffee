@@ -1,11 +1,13 @@
 package binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,7 +34,7 @@ public class QuanLyHoaDonFragment extends Fragment {
     HoaDonDAO dao;
     HoaDon item;
     ArrayList<HoaDon> list;
-    AdapterHoaDonKhachHang adapter;
+    AdapterQuanLyHoaDon adapter;
 
     ArrayList<DatDoUong> listDatDoUong;
     AdapterDSDatHang adapterDSDatHang;
@@ -47,7 +49,7 @@ public class QuanLyHoaDonFragment extends Fragment {
 
         dao = new HoaDonDAO(getActivity());
         list = (ArrayList<HoaDon>) dao.getAll();
-        adapter = new AdapterHoaDonKhachHang(getActivity(), list);
+        adapter = new AdapterQuanLyHoaDon(getActivity(), this, list);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -75,6 +77,7 @@ public class QuanLyHoaDonFragment extends Fragment {
 
         DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
         tvThanhTien.setText(decimalFormat.format(item.getTongTien())+" VND");
+
 
         builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override

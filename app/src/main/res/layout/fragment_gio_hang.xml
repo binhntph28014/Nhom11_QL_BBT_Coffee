@@ -30,6 +30,6 @@
         android:layout_height="wrap_content"
         android:text="Tạo đơn hàng"
         android:layout_gravity="center"
-        android:backgroundTint="#F99A2D"
-        android:textColor="@color/black"/>
+        android:backgroundTint="#D9205618"
+        android:textColor="@color/white"/>
 </LinearLayout>

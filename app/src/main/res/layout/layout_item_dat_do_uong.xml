@@ -2,7 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:background="@drawable/item_backround">
     <ImageView
         android:id="@+id/imgDatDoUong"
         android:layout_width="0dp"

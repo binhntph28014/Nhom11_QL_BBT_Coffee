@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="300dp"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <EditText
         android:id="@+id/edMaDoUong"
@@ -23,25 +24,32 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:background="#4D205618"
+        app:startIconDrawable="@drawable/ic_coffee_24"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edTenDoUong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tên đồ uống"/>
+            android:hint="Tên đồ uống" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:background="#4D205618"
+        app:startIconDrawable="@drawable/ic_attach_money_24"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edGia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Giá tiền"
-            android:inputType="number"/>
+            android:inputType="number"
+            />
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -91,7 +99,7 @@
             android:text="Lưu"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
-            android:backgroundTint="#205618"
+            android:backgroundTint="#D9205618"
             android:textColor="@color/white"/>
         <Button
             android:id="@+id/btnHuyDoUong"
@@ -100,7 +108,7 @@
             android:text="Hủy"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
-            android:backgroundTint="#205618"
+            android:backgroundTint="#D9205618"
             android:textColor="@color/white"/>
     </LinearLayout>
 </LinearLayout>

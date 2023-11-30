@@ -27,6 +27,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        android:background="#4D205618"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edMatKhauCu"
@@ -42,6 +43,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        android:background="#4D205618"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edMatKhauMoi"
@@ -57,6 +59,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
+        android:background="#4D205618"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edNhapLaiMatKhau"
@@ -80,7 +83,7 @@
             android:text="Lưu"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
-            android:backgroundTint="#CC205618"
+            android:backgroundTint="#D9205618"
             android:textColor="@color/white" />
 
         <Button
@@ -89,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"
-            android:backgroundTint="#CC205618"
+            android:backgroundTint="#D9205618"
             android:text="Hủy"
             android:textColor="@color/white" />
     </LinearLayout>

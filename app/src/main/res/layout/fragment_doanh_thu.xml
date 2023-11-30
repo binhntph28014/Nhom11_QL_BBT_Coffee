@@ -28,14 +28,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ngày bắt đầu"
+                android:background="#4D205618"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 >
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edTuNgay"
                     android:drawableEnd="@drawable/ic_calendar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/item_editext"/>
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -43,6 +43,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:background="#4D205618"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -51,16 +52,15 @@
                     android:id="@+id/edDenNgay"
                     android:drawableEnd="@drawable/ic_calendar"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/item_editext"/>
+                    android:layout_height="wrap_content" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnDoanhThu"
-                android:layout_width="360dp"
-                android:layout_height="60dp"
+                android:layout_width="370dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="23dp"
-                android:backgroundTint="#205618"
+                android:backgroundTint="#D9205618"
                 android:text="$ Doanh thu"
                 android:textColor="@color/white"
                 android:layout_gravity="center"/>
