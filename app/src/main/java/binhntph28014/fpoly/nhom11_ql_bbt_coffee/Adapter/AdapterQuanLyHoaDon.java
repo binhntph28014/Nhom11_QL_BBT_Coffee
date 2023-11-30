@@ -16,7 +16,9 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DAO.KhachHangDAO;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DAO.NhanVienDAO;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.KhachHang;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.HoaDon;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.NhanVien;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.DoanhThuFragment;
@@ -68,6 +70,9 @@ public class AdapterQuanLyHoaDon extends ArrayAdapter {
             NhanVien nv = nhanVienDAO.getID(String.valueOf(item.getMaNV()));
             tvNhanVien.setText("Tên nhân viên: " + nv.getHoTen());
             //
+            KhachHangDAO khachHangDAO = new KhachHangDAO(context);
+            KhachHang kh = khachHangDAO.getID(String.valueOf(item.getMaKH()));
+            tvKhachHang.setText("Tên khách hàng: " + kh.getHoTen());
 
             DecimalFormat decimalFormat = new DecimalFormat("###,###.###");
             tvTongTien.setText("Tổng tiền: " + decimalFormat.format(item.getTongTien())+" VND");
