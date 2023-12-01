@@ -27,7 +27,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        android:background="#4D205618"
+        android:background="#26205618"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edMatKhauCu"
@@ -43,7 +43,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        android:background="#4D205618"
+        android:background="#26205618"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edMatKhauMoi"
@@ -59,7 +59,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        android:background="#4D205618"
+        android:background="#26205618"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edNhapLaiMatKhau"

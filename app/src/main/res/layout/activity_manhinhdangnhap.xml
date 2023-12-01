@@ -84,7 +84,7 @@
 
     <Button
         android:id="@+id/btnDangNhap"
-        android:backgroundTint="#205618"
+        android:backgroundTint="#D9205618"
         android:layout_marginTop="490dp"
         android:layout_width="250dp"
         android:layout_height="60dp"

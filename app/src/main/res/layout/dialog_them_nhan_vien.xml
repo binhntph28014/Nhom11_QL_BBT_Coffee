@@ -18,7 +18,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="20dp"
-        android:background="#4D205618"
+        android:background="#26205618"
         app:startIconDrawable="@drawable/ic_person_24"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
@@ -33,7 +33,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="20dp"
-        android:background="#4D205618"
+        android:background="#26205618"
         app:startIconDrawable="@drawable/ic_baseline_phone_in_talk_24"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="20dp"
-        android:background="#4D205618"
+        android:background="#26205618"
         app:startIconDrawable="@drawable/ic_calendar"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText
@@ -83,7 +83,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="20dp"
-        android:background="#4D205618"
+        android:background="#26205618"
         app:startIconDrawable="@drawable/ic_baseline_lock_24"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <com.google.android.material.textfield.TextInputEditText

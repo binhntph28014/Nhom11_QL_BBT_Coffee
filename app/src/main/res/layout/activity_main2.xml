@@ -40,6 +40,7 @@
                         android:text="Welcome to BBT Coffee!"
                         android:textColor="#205618"
                         android:textStyle="bold"
+                        android:textSize="18dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
@@ -51,7 +52,7 @@
                         android:layout_marginTop="5dp"
                         android:text="Order &amp; Drink"
                         android:textColor="#020202"
-                        android:textSize="10sp"
+                        android:textSize="15dp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tvHi" />
                 </LinearLayout>
@@ -75,18 +76,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
                 app:startIconDrawable="@drawable/ic_search"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                >
-
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edTimKiem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#4D205618"
-                    android:hint="Find your drink" />
+                    android:background="#26205618"
+                    android:hint="Find your drink"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.viewpager.widget.ViewPager
@@ -95,7 +94,7 @@
                 android:layout_marginRight="15dp"
                 android:id="@+id/pager_sideshow"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="180dp"
                 />
             <me.relex.circleindicator.CircleIndicator
                 android:id="@+id/indicator_img"
@@ -106,9 +105,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginBottom="10dp"
                 android:text="Categories"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -155,8 +155,8 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="60dp"
+                        android:layout_height="38dp"
                         android:layout_gravity="center"
                         android:src="@drawable/img_tea" />
 
@@ -181,10 +181,10 @@
                     android:padding="10dp">
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="37dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="39dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/img_smoothie" />
+                        android:src="@drawable/img_smoothy" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -208,8 +208,9 @@
 
                     <ImageView
                         android:layout_width="wrap_content"
-                        android:layout_height="42dp"
+                        android:layout_height="38dp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
                         android:src="@drawable/img_other" />
 
                     <TextView
@@ -226,10 +227,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
                 android:text="Popular"
                 android:textColor="@color/black"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
             <GridView
@@ -242,7 +244,7 @@
                 android:numColumns="2"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="10dp"/>
             <TextView
                 android:id="@+id/tv_entry"
                 android:visibility="gone"

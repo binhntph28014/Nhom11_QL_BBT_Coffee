@@ -7,7 +7,7 @@
     android:paddingLeft="10dp"
     android:paddingTop="10dp"
     android:paddingRight="10dp"
-    android:paddingBottom="10dp"
+    android:paddingBottom="20dp"
     >
     <ImageView
         android:id="@+id/imgAnhDoUong"
@@ -23,13 +23,13 @@
         android:layout_gravity="center"
         android:textColor="@color/black"
         android:textStyle="bold"
-        android:textSize="20dp" />
+        android:textSize="18dp" />
 
         <TextView
             android:id="@+id/tvGiaDoUong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#FD0000"
+            android:textColor="#E91E63"
             android:textStyle="bold"
             android:text="Giá sp"
             android:layout_gravity="center"

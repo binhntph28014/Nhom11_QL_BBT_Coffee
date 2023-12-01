@@ -13,7 +13,7 @@
         android:id="@+id/tvTongTien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FA0606"
+        android:textColor="#E91E63"
         android:textStyle="bold"
         android:text="Tổng tiền:"
         android:textSize="20dp"
