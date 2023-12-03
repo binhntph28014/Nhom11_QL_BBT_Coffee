@@ -4,8 +4,10 @@ package binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment;
 import static android.app.Activity.RESULT_OK;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -61,7 +63,7 @@ public class QuanLyDoUongFragment extends Fragment {
     CheckBox chkTrangThai;
     Spinner spnLoai;
     ImageView imgCamera, imgFileUpload, imgAnh;
-    Button btnLuu, btnHuy;
+    Button btnLuu, btnHuy, btnXoa;
 
     LoaiDAO loaiDAO;
     ArrayList<Loai> listLoai;
@@ -92,7 +94,7 @@ public class QuanLyDoUongFragment extends Fragment {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 item = list.get(position);
-                openDialog(getActivity(), 1);
+                openDialogSuaXoa(getActivity(), 1, String.valueOf(item.getMaDoUong()));
                 return false;
             }
         });
@@ -111,6 +113,144 @@ public class QuanLyDoUongFragment extends Fragment {
         imgFileUpload = dialog.findViewById(R.id.imgFile);
         imgAnh = dialog.findViewById(R.id.imgAnh);
         btnHuy = dialog.findViewById(R.id.btnHuyDoUong);
+        btnLuu = dialog.findViewById(R.id.btnLuuDoUong);
+
+        loaiDAO = new LoaiDAO(context);
+        listLoai = new ArrayList<Loai>();
+        listLoai = (ArrayList<Loai>) loaiDAO.getAll();
+        adapterLoaiSpinner = new AdapterLoaiSpinner(context, listLoai);
+        spnLoai.setAdapter(adapterLoaiSpinner);
+        spnLoai.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                maLoai = listLoai.get(position).getMaLoai();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        edMaDoUong.setEnabled(false);
+        if (type!=0){
+            edMaDoUong.setText(item.getMaDoUong()+"");
+            edTenDoUong.setText(item.getTenDoUong());
+            edGiaTien.setText(item.getGiaTien()+"");
+            if (item.getTrangThai() == 1){
+                chkTrangThai.setChecked(true);
+            }else {
+                chkTrangThai.setChecked(false);
+            }
+            byte[] hinhAnh = item.getHinhAnh();
+            Bitmap bitmap = BitmapFactory.decodeByteArray(hinhAnh, 0, hinhAnh.length);
+            imgAnh.setImageBitmap(bitmap);
+
+            int position = 0;
+            for (int i=0; i<listLoai.size(); i++){
+                if (item.getMaLoai() == listLoai.get(i).getMaLoai()){
+                    position = i;
+                }
+            }
+            spnLoai.setSelection(position);
+        }
+        imgCamera.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                        == PackageManager.PERMISSION_DENIED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA}, 100);
+                }else {
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, requestCodeCamera);
+                }
+//                    ActivityCompat.requestPermissions(getActivity(),
+//                            new String[]{Manifest.permission.CAMERA},
+//                            requestCodeCamera);
+            }
+        });
+        imgFileUpload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                        == PackageManager.PERMISSION_DENIED) {
+                    ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.CAMERA}, 100);
+                }else {
+                    Intent intent = new Intent(Intent.ACTION_PICK);
+                    intent.setType("image/*");
+                    startActivityForResult(intent, requestCodeFolder);
+                }
+//                    ActivityCompat.requestPermissions(getActivity(),
+//                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+//                            requestCodeFolder);
+            }
+        });
+
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.cancel();
+            }
+        });
+        btnLuu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //chuyển data imageview sang byte[]
+                byte[] hinhAnh = new byte[0];
+                if (imgAnh.getDrawable() != null && imgAnh.getDrawable() instanceof BitmapDrawable){
+                    BitmapDrawable bitmapDrawable = (BitmapDrawable) imgAnh.getDrawable();
+                    Bitmap bitmap = bitmapDrawable.getBitmap();
+
+                    int sizeInBytes = bitmap.getByteCount();
+                    int maxSize = 1024*1024*5;
+                    if (sizeInBytes < maxSize){
+                        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray);
+                        hinhAnh = byteArray.toByteArray();
+
+                        item = new DoUong();
+                        item.setTenDoUong(edTenDoUong.getText().toString().trim());
+                        if (chkTrangThai.isChecked()){
+                            item.setTrangThai(1);
+                        }else {
+                            item.setTrangThai(0);
+                        }
+                        item.setMaLoai(maLoai);
+                        item.setHinhAnh(hinhAnh);
+
+                        if (validate() >0){
+                            if (type ==0){
+                                if (dao.insertDU(item) >0){
+                                    Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
+                                }else {
+                                    Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
+                                }
+                                dialog.dismiss();
+                            }
+                        }
+                        capNhatLv();
+//                        dialog.dismiss();
+                    }else {
+                        Toast.makeText(context, "Dung lượng ảnh quá lớn!", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(context, "Ảnh lỗi!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        dialog.show();
+    }
+
+    protected void openDialogSuaXoa(final Context context, final int type, String id){
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog_suaxoa_do_uong);
+        edMaDoUong = dialog.findViewById(R.id.edMaDoUong);
+        edTenDoUong = dialog.findViewById(R.id.edTenDoUong);
+        edGiaTien = dialog.findViewById(R.id.edGia);
+        chkTrangThai = dialog.findViewById(R.id.chkTrangThai);
+        spnLoai = dialog.findViewById(R.id.spnMaLoai);
+        imgCamera = dialog.findViewById(R.id.imgCamera);
+        imgFileUpload = dialog.findViewById(R.id.imgFile);
+        imgAnh = dialog.findViewById(R.id.imgAnh);
+        btnXoa = dialog.findViewById(R.id.btnXoaDoUong);
         btnLuu = dialog.findViewById(R.id.btnLuuDoUong);
 
         loaiDAO = new LoaiDAO(context);
@@ -168,8 +308,6 @@ public class QuanLyDoUongFragment extends Fragment {
 //                    ActivityCompat.requestPermissions(getActivity(),
 //                            new String[]{Manifest.permission.CAMERA},
 //                            requestCodeCamera);
-
-
             }
         });
         imgFileUpload.setOnClickListener(new View.OnClickListener() {
@@ -183,18 +321,36 @@ public class QuanLyDoUongFragment extends Fragment {
                     intent.setType("image/*");
                     startActivityForResult(intent, requestCodeFolder);
                 }
-
 //                    ActivityCompat.requestPermissions(getActivity(),
 //                            new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
 //                            requestCodeFolder);
-
-
             }
         });
 
-        btnHuy.setOnClickListener(new View.OnClickListener() {
+        btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setTitle("Delete");
+                builder.setMessage("Bạn có muốn xóa không?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
+                        dao.deleteDoUong(id);
+                        capNhatLv();
+                        dialog.cancel();
+                    }
+                });
+                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                builder.show();
                 dialog.dismiss();
             }
         });
@@ -225,14 +381,7 @@ public class QuanLyDoUongFragment extends Fragment {
                         item.setHinhAnh(hinhAnh);
 
                         if (validate() >0){
-                            if (type ==0){
-                                if (dao.insertDU(item) >0){
-                                    Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
-                                }else {
-                                    Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
-                                }
-                                dialog.dismiss();
-                            }else {
+                            if (type != 0){
                                 item.setMaDoUong(Integer.parseInt(edMaDoUong.getText().toString()));
                                 if (dao.updateDoUong(item) >0){
                                     Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
