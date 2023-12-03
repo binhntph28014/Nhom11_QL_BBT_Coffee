@@ -26,6 +26,7 @@ import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyDoUongFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyHoaDonFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyKhachHangFragment;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.QuanLyNhanVienFragment;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Fragment.Top10Fragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -114,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.nav_Top10:
                         tvTitle.setText("Top 10 đồ uống ");
+                        setTitle("Quản lý đồ uống");
+                        Top10Fragment top10Fragment = new Top10Fragment();
+                        manager.beginTransaction().replace(R.id.flContent, top10Fragment).commit();
                         break;
                     case R.id.navHoaDon:
                         tvTitle.setText("Quản lý hóa đơn");

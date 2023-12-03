@@ -19,13 +19,24 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.Adapter.AdapterQuanLyNhanVien;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DAO.NhanVienDAO;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DAO.ThongKeDAO;
+import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.DoanhThu;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.DTO.NhanVien;
 import binhntph28014.fpoly.nhom11_ql_bbt_coffee.R;
 
@@ -200,6 +211,59 @@ public class QuanLyNhanVienFragment extends Fragment {
 
         }
         return check;
+    }
+
+    public void bieuDoDoanhSo(final Context context, NhanVien item){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_doanh_so, null);
+        builder.setView(view);
+
+        builder.setNegativeButton("HỦY", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+
+        LineChart lineChart = view.findViewById(R.id.lineChartDoanhSo);
+        builder.setTitle("Doanh số của "+item.getHoTen());
+
+        LineDataSet lineDataSet = new LineDataSet(dataValues(item),"Doanh số");
+        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
+        dataSets.add(lineDataSet);
+        LineData data = new LineData(lineDataSet);
+        lineChart.setData(data);
+
+        lineChart.getAxisRight().setEnabled(false);
+        lineChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        lineChart.getXAxis().setGranularity(1.0f);
+
+        lineDataSet.setColors( Color.RED);
+        lineDataSet.setValueTextColor(Color.BLACK);
+        lineDataSet.setValueTextSize(10f);
+
+        lineChart.invalidate();
+
+        builder.show();
+    }
+
+    private List<Entry> dataValues(NhanVien item) {
+        ThongKeDAO thongKeDAO = new ThongKeDAO(getContext());
+        List<DoanhThu> list = (ArrayList<DoanhThu>) thongKeDAO.getDoanhSoNV(String.valueOf(item.getMaNV()));
+
+        List<Entry> dataValue = new ArrayList<>();
+        dataValue.add(new Entry(0,0));
+
+        for (int i=0; i<list.size(); i++){
+            int thang = list.get(i).getThang();
+            int tongTien = list.get(i).getTongTien();
+            dataValue.add(new Entry(list.get(i).getThang(), list.get(i).getTongTien()));
+//            Log.d("zzzzz", "dataValues: "+ thang+ " tổng: "+ tongTien);
+        }
+
+
+        return dataValue;
     }
 
 }

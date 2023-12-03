@@ -73,14 +73,14 @@ public class AdapterQuanLyNhanVien extends ArrayAdapter {
                 tvGioiTinh.setText("Giới tính : Nữ " );
             }
 
-//            imgChart.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//
-//                    fragment.bieuDoDoanhSo(getContext(), item);
-//
-//                }
-//            });
+            imgChart.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    fragment.bieuDoDoanhSo(getContext(), item);
+
+                }
+            });
 
         }
 
